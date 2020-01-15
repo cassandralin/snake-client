@@ -1,21 +1,23 @@
 const { connect } = require('./client');
+const { setupInput } = require('./input');
 console.log('Connecting ...');
 
-const setupInput = function(callback) {
-  const stdin = process.stdin; //allows you to input data straight from keyboard when you run program
-  stdin.setRawMode(true); // set up to handle data from keyboard
-  stdin.setEncoding('utf8'); // set up to handle data from keyboard
-  stdin.resume();
-  stdin.on('data', callback); //handles the data
-  return stdin;
-};
 
-const handleUserInput = function(data){
-  if (data === '\u0003') {
-  process.exit();
-}
-};
+// const setupInput = function(callback) {
+//   const stdin = process.stdin; //allows you to input data straight from keyboard when you run program
+//   stdin.setRawMode(true); // set up to handle data from keyboard
+//   stdin.setEncoding('utf8'); // set up to handle data from keyboard
+//   stdin.resume();
+//   stdin.on('data', callback); //handles the data
+//   return stdin;
+// };
 
-connect();
+// const handleUserInput = function(data){
+//   if (data === '\u0003') {
+//   process.exit();
+// }
+// };
 
-setupInput(handleUserInput);
+// connect();
+
+setupInput(connect());
